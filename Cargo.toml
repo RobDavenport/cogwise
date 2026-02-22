@@ -1,0 +1,10 @@
+[package]
+name = "cogwise"
+version = "0.1.0"
+edition = "2021"
+description = "no_std behavior tree and utility AI library for tick-based game agents"
+license = "MIT"
+
+[dependencies]
+rand_core = "0.6"
+libm = "0.2"

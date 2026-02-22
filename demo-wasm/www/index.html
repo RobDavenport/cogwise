@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cogwise Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>cogwise WASM Demo</h1>
+      <p>Behavior trees + utility scoring in a browser sandbox.</p>
+    </header>
+
+    <section class="controls">
+      <div class="tabs">
+        <button class="tab is-active" data-tab="bt">BT Visualizer</button>
+        <button class="tab" data-tab="curve">Utility Curves</button>
+        <button class="tab" data-tab="sandbox">AI Sandbox</button>
+        <button class="tab" data-tab="compare">Parallel Comparison</button>
+      </div>
+
+      <div class="runtime">
+        <label for="speed">Speed</label>
+        <input id="speed" type="range" min="1" max="6" step="1" value="2" />
+        <button id="step">Step</button>
+        <button id="add-agent">Add Agent</button>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel is-active" data-panel="bt">
+        <canvas id="bt-canvas" width="880" height="420"></canvas>
+      </section>
+
+      <section class="panel" data-panel="curve">
+        <canvas id="curve-canvas" width="880" height="420"></canvas>
+        <p id="curve-readout"></p>
+      </section>
+
+      <section class="panel" data-panel="sandbox">
+        <canvas id="sandbox-canvas" width="640" height="640"></canvas>
+        <p>Click inside the grid to move the shared waypoint.</p>
+      </section>
+
+      <section class="panel" data-panel="compare">
+        <div class="comparison-grid">
+          <article>
+            <h2>Aggressive</h2>
+            <canvas class="compare-canvas" id="cmp-0" width="280" height="220"></canvas>
+          </article>
+          <article>
+            <h2>Defensive</h2>
+            <canvas class="compare-canvas" id="cmp-1" width="280" height="220"></canvas>
+          </article>
+          <article>
+            <h2>Patrol</h2>
+            <canvas class="compare-canvas" id="cmp-2" width="280" height="220"></canvas>
+          </article>
+          <article>
+            <h2>Random</h2>
+            <canvas class="compare-canvas" id="cmp-3" width="280" height="220"></canvas>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
