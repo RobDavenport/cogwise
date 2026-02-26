@@ -70,6 +70,8 @@ cargo build --target wasm32-unknown-unknown --release
 A WASM demo is provided in `demo-wasm/` and can be deployed via GitHub Pages
 using `.github/workflows/pages.yml`.
 
+Live demo: https://robdavenport.github.io/cogwise/
+
 Local demo build:
 
 ```bash

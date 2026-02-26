@@ -1,4 +1,5 @@
-import init, { Simulation } from "../pkg/cogwise_demo_wasm.js";
+const wasmModule = await loadWasmModule();
+const { default: init, Simulation } = wasmModule;
 
 const btCanvas = document.getElementById("bt-canvas");
 const curveCanvas = document.getElementById("curve-canvas");
@@ -345,3 +346,11 @@ function clamp(value, min, max) {
 }
 
 frame();
+
+async function loadWasmModule() {
+  try {
+    return await import("./pkg/cogwise_demo_wasm.js");
+  } catch {
+    return await import("../pkg/cogwise_demo_wasm.js");
+  }
+}
