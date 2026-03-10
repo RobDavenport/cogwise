@@ -72,6 +72,11 @@ using `.github/workflows/pages.yml`.
 
 Live demo: https://robdavenport.github.io/cogwise/
 
+One-time setup for first deployment:
+
+1. Open repository **Settings -> Pages** and set **Source** to **GitHub Actions**.
+2. Optional: add a `PAGES_ADMIN_TOKEN` secret (PAT with repository admin access) to let the workflow auto-enable Pages.
+
 Local demo build:
 
 ```bash

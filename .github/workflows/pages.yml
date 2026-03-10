@@ -42,7 +42,19 @@ jobs:
           cp -r demo-wasm/pkg/* site/pkg/
 
       - name: Configure Pages
+        id: pages
         uses: actions/configure-pages@v5
+        continue-on-error: ${{ secrets.PAGES_ADMIN_TOKEN == '' }}
+        with:
+          enablement: ${{ secrets.PAGES_ADMIN_TOKEN != '' }}
+          token: ${{ secrets.PAGES_ADMIN_TOKEN != '' && secrets.PAGES_ADMIN_TOKEN || github.token }}
+
+      - name: Validate Pages setup
+        if: ${{ steps.pages.outcome == 'failure' && secrets.PAGES_ADMIN_TOKEN == '' }}
+        run: |
+          echo "::error::GitHub Pages is not enabled for this repository."
+          echo "::error::Enable it in Settings > Pages (Source: GitHub Actions), or add a PAGES_ADMIN_TOKEN secret with repository admin access."
+          exit 1
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
